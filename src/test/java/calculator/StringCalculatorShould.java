@@ -25,7 +25,7 @@ class StringCalculatorShould {
     }
     
     @Test
-    void testUnkownAmountOfNumbers(){
+    void testAddUnkownAmountOfNumbers(){
     	  StringCalculator stringCalculator = new StringCalculator();
     	assertEquals(6, stringCalculator.add("2,3,1"));
     }
