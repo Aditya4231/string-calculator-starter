@@ -23,4 +23,10 @@ class StringCalculatorShould {
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(5, stringCalculator.add("2,3"));
     }
+    
+    @Test
+    void testUnkownAmountOfNumbers(){
+    	  StringCalculator stringCalculator = new StringCalculator();
+    	assertEquals(6, stringCalculator.add("2,3,1"));
+    }
 }
