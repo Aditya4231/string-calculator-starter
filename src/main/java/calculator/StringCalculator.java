@@ -2,45 +2,49 @@ package calculator;
 
 class StringCalculator {
 
-	public static int add(String text) {
-		if (text.equals("")) {
+	public static int add(String text){
+		if(text.equals("")){
 			return 0;
-		} else {
+		}
+		else{
 			String delimiter = ",";
-			if (text.matches("//(.*)\n(.*)")) {
+			if(text.matches("//(.*)\n(.*)")){
 				delimiter = Character.toString(text.charAt(2));
 				text = text.substring(4);
 			}
-
+			
 			String numList[] = splitNumbers(text, delimiter + "|\n");
 			return sum(numList);
 		}
 	}
 
-	private static String[] splitNumbers(String numbers) {
-		return numbers.split(",");
-	}
-
-	private static int sum(String[] numbers) {
-		int total = 0;
-		String empty = "";
-		for (String number : numbers) {
-			if (empty.equals(""))
-				empty = number;
-			else
-				empty += ("," + number);
-		}
-		if (!empty.equals("")) {
-			throw new IllegalArgumentException("Negatives not allowed: " + empty);
-		}
-		return total;
-	}
-
-	private static String[] splitNumbers(String numbers, String divider) {
-		return numbers.split(divider);
-	}
-
-	private static int toInt(String number) {
+	private static int toInt(String number){
 		return Integer.parseInt(number);
 	}
+
+	private static String[] splitNumbers(String numbers, String divider){
+	    return numbers.split(divider);
+	}
+
+	private static int sum(String[] numbers){
+ 	    int total = 0;
+ 	    String str = "";
+
+        for(String number : numbers){
+        	if(toInt(number) < 0){
+        		if(str.equals(""))
+        			str = number;
+        		else
+        			str += ("," + number);
+        	}
+        	else
+		    	total += toInt(number);
+		}
+
+		if(!str.equals("")){
+			throw new IllegalArgumentException("Negatives not allowed: " + str);
+		}
+
+		return total;
+    }
 }
