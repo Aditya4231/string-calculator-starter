@@ -7,23 +7,24 @@ class StringCalculator {
 		    return 0;
 		  }
 		  else if(text.contains(",")){
-		    String[] numbers = text.split(",");
-		    return toInt(numbers[0]) + toInt(numbers[1]);
+		    return sum(splitNumbers(text));
 		  }
-		  else if(text.contains(",")){
-			  String[] numbers = text.split(",");
-			  int total = 0;
-			  for(String number : numbers){
-			    total += toInt(number);
-			}
-			  return total;
-			}
 		  else
-			  return 1;
+		    return 1;
 		}
 
+		private static String[] splitNumbers(String numbers){
+		  return numbers.split(",");
+		}
+
+		private static int sum(String[] numbers){
+		  int total = 0;
+		  for(String number : numbers){
+		    total += toInt(number);
+		  }
+		  return total;
+		}
 		private static int toInt(String number){
-		  return Integer.parseInt(number);
+			return Integer.parseInt(number);
 		}
-    }
-
+}
