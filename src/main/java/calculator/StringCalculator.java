@@ -24,9 +24,16 @@ class StringCalculator {
 
 		private static int sum(String[] numbers){
 		  int total = 0;
+		  String empty = "";
 		  for(String number : numbers){
-		    total += toInt(number);
+			  if(empty.equals(""))
+				  empty = number;
+      		else
+      			empty += ("," + number);
 		  }
+		  if(!empty.equals("")){
+				throw new IllegalArgumentException("Negatives not allowed: " + empty);
+			}
 		  return total;
 		}
 		private static String[] splitNumbers(String numbers, String divider){
