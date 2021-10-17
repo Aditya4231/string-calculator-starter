@@ -29,5 +29,11 @@ class StringCalculatorShould {
     	  StringCalculator stringCalculator = new StringCalculator();
     	assertEquals(6, stringCalculator.add("2,3,1"));
     }
+    
+    @Test
+    public void testNewLine(){
+    	StringCalculator stringCalculator = new StringCalculator();
+    	assertEquals(6, stringCalculator.add("1\n2,3"));
+    }
    
 }
