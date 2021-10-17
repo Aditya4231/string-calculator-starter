@@ -39,9 +39,22 @@ class StringCalculatorShould {
     @Test
     void AddWithNegativeNoShowExeption(){
     	  StringCalculator stringCalculator = new StringCalculator();
-    	assertEquals(6, stringCalculator.add("-2,3,1"));
+    	  try {
+    		  stringCalculator.add("-1,2");
+  		}
+  		catch (IllegalArgumentException e){
+  			assertEquals(e.getMessage(), "Negatives not allowed: -1");
+  		}
+
+  		try {
+  			stringCalculator.add("2,-4,3,-5");
+  		}
+  		catch (IllegalArgumentException e){
+  			assertEquals(e.getMessage(), "Negatives not allowed: -4,-5");
+  		}
+      }
     }
     
     
    
-}
+
